@@ -1,6 +1,17 @@
 import tensorflow as tf
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.utils import to_categorical
+import os
+
+BASE_DIR = os.path.dirname(__file__)
+
+MODEL_PATH = os.path.join(BASE_DIR, "..", "build")
+
+ORIGINAL_MODEL_PATH = os.path.join(MODEL_PATH, "mnist_cnn_model.h5")
+original_model = tf.keras.models.load_model(ORIGINAL_MODEL_PATH)
+MODIFIED_MODEL_PATH = os.path.join(MODEL_PATH, "mnist_cnn_model_modified.h5")
+modified_model = tf.keras.models.load_model(MODIFIED_MODEL_PATH)
+
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
@@ -30,4 +41,4 @@ print(
     "------------------------------------------------------------------------------------------------------------------------"
 )
 
-original_model.summary()
+modified_model.summary()
