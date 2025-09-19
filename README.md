@@ -1,4 +1,4 @@
-#ChatGPT is used in this project  
+ChatGPT is used in **quantize_layer_output.py**
   
 Training Code :  
 <https://github.com/Jiang-1211/MNIST_model/blob/main/source/train_model.py>  
