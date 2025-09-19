@@ -1,3 +1,5 @@
+#ChatGPT is used in this project  
+  
 Training Code :  
 <https://github.com/Jiang-1211/MNIST_model/blob/main/source/train_model.py>  
 Layer Parameters Quantization :  
