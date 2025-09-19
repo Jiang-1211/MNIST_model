@@ -1,6 +1,7 @@
 import tensorflow as tf
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.utils import to_categorical
+from keras.utils import to_categorical, plot_model
 import os
 
 BASE_DIR = os.path.dirname(__file__)
@@ -31,14 +32,14 @@ loss_original, accuracy_original = original_model.evaluate(x_test, y_test, verbo
 loss_modified, accuracy_modified = modified_model.evaluate(x_test, y_test, verbose=2)
 
 
-print(
-    "------------------------------------------------------------------------------------------------------------------------"
-)
+print(50 * "-")
 print(f"          |  Accuracy  |  Loss ")
 print(f"Original  |  {accuracy_original:.4f}    |  {loss_original:.4f}")
 print(f"Modified  |  {accuracy_modified:.4f}    |  {loss_modified:.4f}")
-print(
-    "------------------------------------------------------------------------------------------------------------------------"
-)
+print(50 * "-")
 
-modified_model.summary()
+plot_model(
+    original_model,
+    to_file=os.path.join(MODEL_PATH, "model_structure.png"),
+    show_shapes=True,
+)
