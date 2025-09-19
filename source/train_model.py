@@ -53,7 +53,6 @@ model = tf.keras.models.Sequential(
         tf.keras.layers.Dense(
             units=16, activity_regularizer=tf.keras.regularizers.l2(1e-4)
         ),
-        tf.keras.layers.Activation("relu"),
         tf.keras.layers.Dense(
             units=NUM_CLASS,
             activity_regularizer=tf.keras.regularizers.l2(1e-4),

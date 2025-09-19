@@ -21,13 +21,6 @@ x_test = x_test.reshape(-1, 28, 28, 1)
 
 y_test = to_categorical(y_test, num_classes=10)
 
-original_model = tf.keras.models.load_model(
-    "C:/VSCode_Projects/ML/model/build/mnist_cnn_model.h5"
-)
-modified_model = tf.keras.models.load_model(
-    "C:/VSCode_Projects/ML/model/build/mnist_cnn_model_modified.h5"
-)
-
 loss_original, accuracy_original = original_model.evaluate(x_test, y_test, verbose=2)
 loss_modified, accuracy_modified = modified_model.evaluate(x_test, y_test, verbose=2)
 
@@ -43,3 +36,5 @@ plot_model(
     to_file=os.path.join(MODEL_PATH, "model_structure.png"),
     show_shapes=True,
 )
+
+original_model.summary()

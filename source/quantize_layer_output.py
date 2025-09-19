@@ -1,11 +1,11 @@
 # 1) 你的自訂卷積層：權重介面與 Conv2D 對齊（kernel, bias），以便承接舊權重
+import os
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
-from keras import layers, activations, Model, models
+from tensorflow.keras import layers, models, activations, backend as K
 from tensorflow.keras.datasets import mnist
 from tensorflow.keras.utils import to_categorical
-import os
 
 np.set_printoptions(threshold=np.inf)
 # ✅ 無論你是 `import keras` 或 `from tensorflow import keras`，都能相容
@@ -249,7 +249,7 @@ custom_model.compile(
 
 loss, acc = custom_model.evaluate(x_test, y_test, verbose=2)
 
-
+# 保存各層輸出結果到文字檔
 intermediate_layer = tf.keras.models.Model(
     inputs=custom_model.layers[0].input, outputs=custom_model.layers[0].output
 )

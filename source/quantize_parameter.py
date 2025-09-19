@@ -5,17 +5,16 @@ import os
 np.set_printoptions(threshold=np.inf)
 
 BASE_DIR = os.path.dirname(__file__)
-ORIGINAL_MODEL_PATH = os.path.join(BASE_DIR, "mnist_cnn_model.h5")
-MODIFIED_MODEL_PATH = os.path.join(BASE_DIR, "mnist_cnn_model_modified.h5")
+ORIGINAL_MODEL_PATH = os.path.join(BASE_DIR, "..", "build", "mnist_cnn_model.h5")
+MODIFIED_MODEL_PATH = os.path.join(
+    BASE_DIR, "..", "build", "mnist_cnn_model_modified.h5"
+)
 
 
 def quantization(x, interval, lower, upper):
     x_clip = np.clip(x, lower, upper)
-
     idx = np.round((x_clip - lower) / interval)
-
     q = lower + idx * interval
-
     return q.astype(x.dtype)
 
 
@@ -36,4 +35,5 @@ for i in range(len(weights)):
         weights[i] = weights[i]
 
 model.set_weights(weights)
+# keras.saving.save_model(model, MODIFIED_MODEL_PATH)
 model.save(MODIFIED_MODEL_PATH)
